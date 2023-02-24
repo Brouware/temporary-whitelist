@@ -1,0 +1,19 @@
+[Unit]
+Description=Temporary whitelist for Invidious
+After=syslog.target
+After=network.target
+
+[Service]
+RestartSec=2s
+Type=simple
+
+User=nobody
+Group=nogroup
+
+WorkingDirectory=/opt/temporary-whitelist
+ExecStart=/usr/bin/node /opt/temporary-whitelist/index.js
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
